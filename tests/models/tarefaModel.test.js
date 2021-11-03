@@ -45,5 +45,12 @@ describe('Testa se é possivel a adição de uma nova tarefa no banco', () => {
       const response = await tarefaModel.criaTarefa(payload.tarefa, payload.status);
       expect(response).to.have.a.property('insertedId');
     });
+
+    it('o objeto retornado possui uma tarrefa e status cadastrados', async () => {
+      await tarefaModel.criaTarefa(payload.tarefa, payload.status);
+      const tarefaCriada = await connectionMock.collection('tarefas').findOne({ tarefa: payload.tarefa, status: payload.status });
+
+      expect(tarefaCriada).not.to.be.null;
+    });
   });
 });
