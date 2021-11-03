@@ -11,7 +11,6 @@ const criaTarefa = async (tarefa, status) => {
     tarefa,
     status,
   });
-  console.log(novaTarefa, 'ble');
   return novaTarefa;
 }
 
