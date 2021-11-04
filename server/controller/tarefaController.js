@@ -17,7 +17,7 @@ const criaTarefa = async (req, res) => {
   const { status } = req.query('status');
 
   const criar = await tarefaService.criaTarefa(tarefa, status);
-  if (!criar) return res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
+  if (!criar) return res.status(StatusCodes.BAD_REQUEST).json(ReasonPhrases.BAD_REQUEST);
   return res.status(StatusCodes.CREATED).json(ReasonPhrases.CREATED);
 };
 
