@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import Form from './components/Form';
+import Table from './components/Table';
+import './CSS/App.css';
 
 function App() {
   const [data, setData] = useState(null);
@@ -13,6 +15,8 @@ function App() {
   return (
     <div className="App">
       <p>{ !data ? 'Loading...' : data }</p>
+      <Form />
+      <Table />
     </div>
   );
 }
