@@ -13,9 +13,9 @@ const todasTarefas = async (req, res) => {
 };
 
 const criaTarefa = async (req, res) => {
+  console.log('usado');
   const { tarefa } = req.query('tarefa');
   const { status } = req.query('status');
-
   const criar = await tarefaService.criaTarefa(tarefa, status);
   if (!criar) return res.status(StatusCodes.BAD_REQUEST).json(ReasonPhrases.BAD_REQUEST);
   return res.status(StatusCodes.CREATED).json(ReasonPhrases.CREATED);
