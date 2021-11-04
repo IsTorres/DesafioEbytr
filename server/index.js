@@ -1,10 +1,10 @@
 const express = require('express');
-const { 
-  ReasonPhrases,
-  StatusCodes,
-  getReasonPhrase,
-  getStatusCode, 
-} = require('http-status-codes');
+require('dotenv').config();
+
+// const {
+//   getReasonPhrase,
+//   getStatusCode, 
+// } = require('http-status-codes');
 
 const {
   criaTarefa,
@@ -20,5 +20,7 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/tarefas', todasTarefas)
+
+app.post('/', criaTarefa)
 
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

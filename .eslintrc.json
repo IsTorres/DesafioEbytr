@@ -1,0 +1,15 @@
+// https://stackoverflow.com/questions/50894000/eslint-process-is-not-defined
+{
+    "env": {
+        "node": true,
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaVersion": 12
+    },
+    "rules": {
+    }
+}
