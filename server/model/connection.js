@@ -1,8 +1,8 @@
 const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
-const MONGO_DB_URL = 'mongodb://localhost:27017/ListaDeTarefas' || process.env.DB_URL;
-const DB_NAME = 'ListaDeTarefas' || process.env.DB_NAME;
+const MONGO_DB_URL = 'mongodb://localhost:27017/StoreManager' || process.env.DB_URL;
+const DB_NAME = 'StoreManager' || process.env.DB_NAME;
 
 let schema = null;
 
