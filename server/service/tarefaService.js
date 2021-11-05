@@ -22,7 +22,15 @@ const criaTarefa = async (tarefa, status) => {
   return tarefaCriada;
 };
 
+const deleteTarefa = async (id) => {
+  if (!id) return false;
+
+  const removeTarefa = await tarefaModel.deleteTarefa(id);
+  return removeTarefa;
+};
+
 module.exports = {
   todasTarefas,
   criaTarefa,
+  deleteTarefa,
 };

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Table() {
   const [tarefa, setTarefa] = useState([]);
@@ -9,9 +10,31 @@ export default function Table() {
       .then((data) => setTarefa(data));
   }, [tarefa]);
 
+  const deleteData = (id) => {
+    console.log(id, 'oi');
+    axios.delete(`http://localhost:3001/${id}`)
+      .then((res) => res)
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const handleRemove = (id, evt) => {
+    evt.preventDefault();
+    deleteData(id);
+  };
+
   return (
     <div>
-      { tarefa.map((el) => ( <div key={ el._id }>{`tarefa: ${el.tarefa} | status: ${el.status}`}</div>)) }
+      <ul>
+        { tarefa.map((el) => (
+          <li key={ el._id }>
+            <span>{`tarefa: ${el.tarefa} `}</span>
+            <span>{`status: ${el.status}`}</span>
+            <button onClick={(e) => handleRemove(el._id, e)}>X</button>
+          </li>
+        )) }
+      </ul>
     </div>
-  )
-}
+  );
+};

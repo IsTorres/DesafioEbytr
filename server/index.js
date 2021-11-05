@@ -9,6 +9,7 @@ app.use(express.json());
 const {
   criaTarefa,
   todasTarefas,
+  deleteTarefa,
 } = require('./controller/tarefaController');
 
 const PORT = process.env.PORT || 3001;
@@ -28,5 +29,7 @@ app.get('/api', (req, res) => {
 app.get('/tarefas', todasTarefas)
 
 app.post('/', criaTarefa)
+
+app.delete('/:id', deleteTarefa)
 
 app.listen(PORT, () => console.log(`Server listening on ${PORT}`));

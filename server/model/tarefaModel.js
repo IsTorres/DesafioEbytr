@@ -1,4 +1,5 @@
 const connection = require('./connection');
+const { ObjectId } = require('mongodb');
 
 const todasTarefas = async () => {
   const db = await connection.getConnection();
@@ -15,7 +16,15 @@ const criaTarefa = async (tarefa, status) => {
   return novaTarefa;
 }
 
+const deleteTarefa = async (id) => {
+  const db = await connection.getConnection();
+  await db.collection('tarefas').deleteOne({ _id: ObjectId(id) });
+  const checkDelet = await db.collection('tarefas').findOne({ _id: ObjectId(id) });
+  return checkDelet;
+}
+
 module.exports = {
   todasTarefas,
   criaTarefa,
+  deleteTarefa,
 };
