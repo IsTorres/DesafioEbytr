@@ -2,8 +2,7 @@ const connection = require('./connection');
 
 const todasTarefas = async () => {
   const db = await connection.getConnection();
-  const tarefas =  await db.collection('tarefas').find().toArray();
-  return tarefas;
+  await db.collection('tarefas').find().toArray();
 };
 
 const criaTarefa = async (tarefa, status) => {

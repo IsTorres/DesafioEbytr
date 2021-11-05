@@ -5,19 +5,19 @@ const validaTarefa = (tarefa) => {
 };
 
 const validaStatus = (status) => {
-  const statusPossiveis = ['Pendente', 'Em andamento', 'Pronto'];
+  const statusPossiveis = ['pendente', 'em andamento', 'pronto'];
   return statusPossiveis.some((el) => el === status);
 };
 
 const todasTarefas = async () => {
   const tarefas = await tarefaModel.todasTarefas();
-  
   return tarefas;
 };
 
 const criaTarefa = async (tarefa, status) => {
   if (validaTarefa(tarefa) === false) return false;
   if (validaStatus(status) === false) return false;
+
   const tarefaCriada = await tarefaModel.criaTarefa(tarefa, status);
   return tarefaCriada;
 };
