@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
-import axios from 'axios';
+import { useState } from "react";
+import axios from "axios";
 
 export default function Form() {
-  const [tarefa, setTarefa] = useState({ tarefa: '', status: 'Pendente' });
-  
+  const [tarefa, setTarefa] = useState({ tarefa: "", status: "Pendente" });
+
   //fonte: https://axios-http.com/docs/post_example
   const sendData = () => {
-    axios.post('http://localhost:3001/', tarefa)
-      .then(res => res)
-      .catch(function (error) {
+    axios
+      .post("http://localhost:3001/", tarefa)
+      .then((res: any) => res)
+      .catch(function (error: any) {
         console.log(error);
       });
-  }
+  };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: { preventDefault: () => void }) => {
     evt.preventDefault();
     sendData();
   };
 
-  const handleImputChange = (evt) => {
+  const handleImputChange = (evt: {
+    target: { name: string | number; value: any };
+  }) => {
     tarefa[evt.target.name] = evt.target.value;
     setTarefa(tarefa);
   };
@@ -33,5 +36,5 @@ export default function Form() {
       </select>
       <button type="submit">Criar tarefa</button>
     </form>
-  )
+  );
 }
